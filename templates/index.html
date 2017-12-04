@@ -1,0 +1,133 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="vertical-center">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1" id="box">
+				<h1>SECRET SANTA GENERATOR</h1>
+
+				<!-- Button trigger modal -->
+				<div  class="col-md-offset-1" id="howButton">
+					<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModal">
+						How does it work?
+					</button>
+				</div>
+
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">How to use the Secret Santa Generator</h4>
+							</div>
+							<div class="modal-body">
+								<p>The Secret Santa Generator randomly assigns a giftee to each person on the list and notifies them via email. Follow the following steps:</p>
+								<ol>
+									<li>Fill in the first row with <strong>your</strong> name and e-mail address.</li>
+									<li>Use the <i class="fa fa-plus"></i> and <i class="fa fa-minus"></i> signs to add and remove rows.</li>
+									<li>Fill in the rest of the rows with the names and e-mail addresses of the rest of the participants.</li>
+									<li>Choose the <strong>Send me the results</strong> option if you want to get an extra email with all the results.</li>
+									<li>Hit the <strong>Send emails!</strong> button.</li>
+								</ol>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- FORM -->
+				<form form action="{{ url_for('index') }}"  method="post" id='myForm'>
+					<div id="wrapper">
+
+						<!-- First form -->
+						<div class="first row line">
+							<div class="col-xs-5 col-md-4 col-md-offset-1">
+								<div class="form-group">
+									<input class="form-control" data-equals type="text" name="name" placeholder="Your name" required>
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="col-xs-5 col-md-5">
+								<div class="form-group">
+									<input class="form-control" data-equals type="email" name="email" placeholder="Your email" required>
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+
+						</div>
+
+						<!-- Second form and template -->
+						<div class="second">
+							<div class="row line" id="extra">
+								<div class="col-xs-5 col-md-4 col-md-offset-1">
+									<div class="form-group">
+										<input  class="form-control" data-equals type="text" name="name" placeholder="Name" required>
+										<div class="help-block with-errors"></div>
+									</div>
+								</div>
+								<div class="col-xs-5 col-md-5">
+									<div class="form-group">
+										<input class="form-control" data-equals type="email" name="email" placeholder="Email" required>
+										<div class="help-block with-errors"></div>
+									</div>
+								</div>
+								<div class="col-xs-1 col-md-1">
+									<button type="button" class="btn btn-danger minusButton"><i class="fa fa-minus"></i></button>
+								</div>
+							</div>
+						</div>
+
+						<!-- Third form -->
+						<div class="third row line">
+							<div class="col-xs-5 col-md-4 col-md-offset-1">
+								<div class="form-group">
+									<input class="form-control" data-equals type="text" name="name" placeholder="Name" required>
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="col-xs-5 col-md-5" >
+								<div class="form-group">
+									<input class="form-control" data-equals type="email" name="email" placeholder="Email" required>
+									<div class="help-block with-errors"></div>
+								</div>
+							</div>
+							<div class="col-xs-1 col-md-1">
+								<button type="button" class="btn btn-success addButton"><i class="fa fa-plus"></i></button>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- I want to see results radio -->
+					<div class="container-fluid">
+						<div class="row results">
+							<label class="radio-inline col-xs-5 col-xs-offset-1 col-md-2 col-md-offset-4">
+								<input type="radio" name="wannaSeeResults" id="wannaSeeResults1" value="yes" checked>Send me the results
+							</label>
+							<label class="radio-inline col-xs-5 col-md-2">
+								<input type="radio" name="wannaSeeResults" id="wannaSeeResults2" value="no">I don't want to see the results
+							</label>
+						</div>
+					</div>
+
+					<!-- Secret Santa Button -->
+					<div>
+						<div>
+							<div class="form-group"  id="santaButton">
+								<button type="submit" class="btn btn-default btn-lg">Send emails!</button>
+							</div>
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
