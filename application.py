@@ -50,7 +50,10 @@ Your Secret Santa giftee is {}. Time to get down to shopping! :)
 Yours,
 Santa
             """.format(l[i][0], l2[i][0])
-            mail.send(msg)
+            try:
+                mail.send(msg)
+            except:
+                return render_template("wrong.html")
 
         #send results email
         if radio=='yes':
@@ -70,7 +73,10 @@ Santa
             msg.html += """
             </table><p>Best,</p><p>Santa</p></body></html>
             """
-            mail.send(msg)
+            try:
+                mail.send(msg)
+            except:
+                return render_template("wrong.html")
 
 
         return render_template("emails-sent.html")
